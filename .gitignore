@@ -29,3 +29,6 @@ override.tf.json
 # example: *tfplan*
 
 credential/
+
+# Ignoring mac stuff
+.DS_Store
