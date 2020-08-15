@@ -17,7 +17,19 @@ sudo rm -r /home/jenkins/jenkins.war
 sudo su - jenkins -c "wget http://updates.jenkins-ci.org/latest/jenkins.war"
 
 # copy jenkins-service file to systemd
-sudo cp ../jenkins.service /etc/systemd/system
+cat << EOF > /etc/systemd/system/jenkins.service
+[Unit]
+Description=Jenkins
+
+[Service]
+User=jenkins
+
+WorkingDirectory=/home/jenkins
+ExecStart=/usr/bin/java -jar /home/jenkins/jenkins.war
+
+[Install]
+WantedBy=multi-user.target
+EOF
 
 # new service added, systemd needs to be reloaded
 sudo systemctl daemon-reload
