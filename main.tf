@@ -1,3 +1,18 @@
+module "vpc" {
+  source = "./modules/vpc"
+  name = var.vpc_name
+}
+
+module "compute" {
+  source       = "./modules/compute"
+  network_name = var.vpc_name
+  name         = var.instance_name
+  machine_type = var.machine_type
+  image        = var.image
+  script       = var.script
+  tag          = var.tag
+}
+
 resource "google_compute_network" "vpc_network" {
     name = "terraform-network"
   }
