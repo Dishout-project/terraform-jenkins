@@ -1,12 +1,12 @@
 module "vpc" {
-  source = "./modules/vpc"
-  name = var.vpc_name
+  source     = "./modules/vpc"
+  vpc_name   = var.vpc_name
 }
 
 module "compute" {
   source         = "./modules/compute"
-  vpc            = var.vpc_name
-  instance       = var.instance_name
+  vpc_name       = var.vpc_name
+  instance_name  = var.instance_name
   machine_type   = var.machine_type
   image          = var.image
   script         = var.script
@@ -15,8 +15,9 @@ module "compute" {
 }
 
 module "network" {
-  firewall       = var.firewall_name
-  vpc            = var.vpc_name
+  source         = "./modules/network"
+  firewall_name  = var.firewall_name
+  vpc_name       = var.vpc_name
   tag            = var.tag  
 
 }

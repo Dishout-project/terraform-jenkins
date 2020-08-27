@@ -20,7 +20,7 @@ variable "image" {
 
 variable "script" {
     type    = string
-    default = "scripts/install.sh"
+    default = "./scripts/install.sh"
 }
 
 variable "tag" {

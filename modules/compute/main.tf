@@ -6,7 +6,7 @@ resource "google_compute_instance" "instance" {
     tags = [var.tag]
 
     boot_disk {
-        initalize_params {
+        initialize_params {
             image = var.image
         }
     }

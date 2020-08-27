@@ -1,4 +1,4 @@
-vaariable "firewall_name" {
+variable "firewall_name" {
     description = "name of firewall rule"
 }
 
