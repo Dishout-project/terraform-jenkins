@@ -13,7 +13,11 @@ resource "google_compute_instance" "instance" {
 
     network_interface {
         network = var.vpc_name
+        access_config {
+            nat_ip = google_compute_address.static_ip.address
+            // Ephemeral IP
     }
+}
 }
 
 resource "google_compute_address" "static_ip" {

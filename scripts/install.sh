@@ -16,7 +16,7 @@ sudo rm -r /home/jenkins/jenkins.war
 # briefly carries a task on user - jenkins to obtain the jenkins WAR file.
 sudo su - jenkins -c "wget http://updates.jenkins-ci.org/latest/jenkins.war"
 
-# copy jenkins-service file to systemd
+# copy jenkins-service file to systemd 
 cat << EOF > /etc/systemd/system/jenkins.service
 [Unit]
 Description=Jenkins

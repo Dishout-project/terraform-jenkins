@@ -11,6 +11,5 @@
       ports    = ["22", "80", "443", "8080"]
     }
   
-    source_tags = [var.tag]
     source_ranges = ["0.0.0.0/0"]
   }

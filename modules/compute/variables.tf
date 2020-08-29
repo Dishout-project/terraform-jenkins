@@ -6,12 +6,12 @@ variable "machine_type" {
     description = "type of machine"
 }
 
-variable "script" {
-    description = "metadata startup script"
-}
-
 variable "tag" {
     description = "name of tag"
+}
+
+variable "script" {
+    description = "metadata startup script"
 }
 
 variable "image" {
