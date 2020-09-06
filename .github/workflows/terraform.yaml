@@ -24,17 +24,20 @@ jobs:
         wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
         unzip terraform_"$tf_version"_linux_amd64.zip
         sudo mv terraform /usr/local/bin/
-    # - name: Terraform create credential
-    #   run: |
-    #     $
-    - name: Terraform init
+    - name: Terraform create credential
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
+      run: |
+        mkdir credential
+        echo $GOOGLE_APPLICATION_CREDENTIALS > credential/gcp_credentials.json
+    - name: Terraform init
+      # env:
+      #   GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
       run: |
         pwd
         terraform init
     - name: Terraform apply
-      env:
-        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
+      # env:
+      #   GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
       run: |
         terraform apply --auto-approve
