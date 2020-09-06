@@ -1,0 +1,40 @@
+name: Terraform-Jenkins-Apply
+
+on: 
+  workflow_dispatch
+  # workflow_dispatch:
+  #   inputs:
+  #     logLevel:
+  #       description: 'Log level'     
+  #       required: true
+  #       default: 'warning'
+  #     tags:
+  #       description: 'Test scenario tags'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Terraform
+      env:
+        TERRAFORM_VERSION: "0.13.2"
+      run: |
+        tf_version=$TERRAFORM_VERSION
+        wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
+        unzip terraform_"$tf_version"_linux_amd64.zip
+        sudo mv terraform /usr/local/bin/
+    # - name: Terraform create credential
+    #   run: |
+    #     $
+    - name: Terraform init
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
+      run: |
+        pwd
+        terraform init
+    - name: Terraform apply
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
+      run: |
+        terraform apply --auto-approve
