@@ -1,18 +1,10 @@
-name: Terraform-Jenkins-Apply
+name: Terraform-Jenkins-Plan
 
 on: 
   workflow_dispatch
-  # workflow_dispatch:
-  #   inputs:
-  #     logLevel:
-  #       description: 'Log level'     
-  #       required: true
-  #       default: 'warning'
-  #     tags:
-  #       description: 'Test scenario tags'
 
 jobs:
-  build:
+  plan:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -31,13 +23,9 @@ jobs:
         mkdir credential
         echo $GOOGLE_APPLICATION_CREDENTIALS > credential/gcp_credentials.json
     - name: Terraform init
-      # env:
-      #   GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
       run: |
         pwd
         terraform init
-    - name: Terraform apply
-      # env:
-      #   GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
+    - name: Terraform plan
       run: |
-        terraform apply --auto-approve
+        terraform plan
