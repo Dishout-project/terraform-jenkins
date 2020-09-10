@@ -1,0 +1,28 @@
+{
+  "variables": {
+    "source_image_family": "ubuntu-1804-lts",
+    "machine_type": "n1-standard-1",
+    "region" : "us-central1",
+    "zone" : "us-central1-c",
+    "project_id": "dishout-285810"
+  },
+  "builders": [{
+      "type": "googlecompute",
+      "project_id": "dishout-285810",
+      "machine_type": "n1-standard-1",
+      "source_image_family": "ubuntu-1804-lts",
+      "region": "us-central1",
+      "zone": "us-central1-c",
+      "image_description": "Jenkins Packer",
+      "image_name": "jenkins-pack-{{timestamp}}",
+      "disk_size": 16,
+      "disk_type": "pd-ssd",
+      "ssh_username": "jenkins",
+      "account_file": "credential/gcp_credentials.json"
+    }], 
+    "provisioners": [{
+      "type": "shell",
+      "script": "jenkins-setup/install.sh",
+      "pause_before": "10s"
+    }]
+}

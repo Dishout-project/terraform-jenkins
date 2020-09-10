@@ -20,7 +20,7 @@ variable "image" {
 
 variable "script" {
     type    = string
-    default = "./scripts/install.sh"
+    default = "../packer/jenkins-setup/install.sh"
 }
 
 variable "tag" {
