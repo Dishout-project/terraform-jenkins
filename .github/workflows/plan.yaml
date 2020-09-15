@@ -1,0 +1,33 @@
+name: Terraform-Jenkins-Plan
+
+on: 
+  workflow_dispatch:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Terraform
+      env:
+        TERRAFORM_VERSION: "0.13.2"
+      run: |
+        tf_version=$TERRAFORM_VERSION
+        wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
+        unzip terraform_"$tf_version"_linux_amd64.zip
+        sudo mv terraform /usr/local/bin/
+    - name: Terraform create credential
+      env:
+        GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
+      run: |
+        mkdir credential
+        echo $GOOGLE_APPLICATION_CREDENTIALS > credential/gcp_credentials.json
+    - name: Terraform init
+      run: |
+        pwd
+        terraform init
+    - name: Terraform plan
+      run: |
+        terraform plan
