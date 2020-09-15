@@ -8,6 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Terraform version
+      run: |
+        terraform version
+        which terraform
     - name: Install Terraform
       env:
         TERRAFORM_VERSION: "0.13.2"
