@@ -14,6 +14,7 @@ jobs:
       run: |
         tf_version=$TERRAFORM_VERSION
         wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
+        ls -al
         unzip terraform_"$tf_version"_linux_amd64.zip
         sudo mv terraform /usr/local/bin/
     - name: Install Packer
@@ -22,8 +23,6 @@ jobs:
       run: |
         VER=$PACKER_VERSION
         wget https://releases.hashicorp.com/packer/${VER}/packer_${VER}_linux_amd64.zip
-        ls -al
-        sudo apt install unzip
         unzip packer_${VER}_linux_amd64.zip
         sudo mv packer /usr/local/bin
     - name: Terraform create credential
