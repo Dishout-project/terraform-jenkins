@@ -22,9 +22,9 @@ jobs:
       run: |
         tf_version=$TERRAFORM_VERSION
         wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
-        unzip terraform_"$tf_version"_linux_amd64.zip
-        ls
-        sudo mv -f terraform /usr/local/bin/
+        unzip terraform_"$tf_version"_linux_amd64.zip -d ~/terraform-jenkins/terraform
+        pwd
+        sudo mv  ~/terraform/terraform /usr/local/bin/
     - name: Install Packer
       env:
         PACKER_VERSION: "1.5.6"
