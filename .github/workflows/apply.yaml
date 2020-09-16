@@ -21,7 +21,6 @@ jobs:
         TERRAFORM_VERSION: "0.13.2"
       run: |
         tf_version=$TERRAFORM_VERSION
-#       experiencing error 403 wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.
         wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_386.zip
         pwd
         unzip terraform_"$tf_version"_linux_amd64.zip -d ~/terraform-jenkins/terraform
