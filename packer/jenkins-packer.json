@@ -23,7 +23,11 @@
     "provisioners": [{
       "type": "file",
       "source": "packer/jenkins-setup",
-      "destination": "/tmp/jenkins-setup"
+      "destination": "/tmp"
+    },
+    {
+      "type": "shell",
+      "inline": "ls -lh /tmp"
     },
     {
       "type": "shell",
