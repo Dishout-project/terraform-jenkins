@@ -12,6 +12,10 @@ jobs:
       run: |
         terraform version
         which terraform
+    - name: Pre-existing Terraform Clean
+      run: |
+        sudo rm /usr/local/bin/terraform
+        ls /usr/local/bin
     - name: Install Terraform
       env:
         TERRAFORM_VERSION: "0.13.2"
