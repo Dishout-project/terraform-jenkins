@@ -10,10 +10,6 @@ variable "tag" {
     description = "name of tag"
 }
 
-variable "script" {
-    description = "metadata startup script"
-}
-
 variable "image" {
     description = "type of OS Image"
 }

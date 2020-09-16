@@ -10,7 +10,6 @@ module "compute" {
   machine_type   = var.machine_type
   tag            = var.tag
   image          = var.image
-  script         = var.script
   static_ip_name = var.static_ip_name
 }
 

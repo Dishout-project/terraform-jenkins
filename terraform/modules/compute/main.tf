@@ -1,7 +1,6 @@
 resource "google_compute_instance" "instance" {
     name = var.instance_name
     machine_type = var.machine_type
-    metadata_startup_script = file(var.script)
 
     tags = [var.tag]
 
