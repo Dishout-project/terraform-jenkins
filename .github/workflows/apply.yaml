@@ -31,8 +31,8 @@ jobs:
       run: |
         VER=$PACKER_VERSION
         wget https://releases.hashicorp.com/packer/${VER}/packer_${VER}_linux_amd64.zip
-        unzip packer_${VER}_linux_amd64.zip
-        sudo mv -f packer /usr/local/bin
+        unzip packer_${VER}_linux_amd64.zip -d ./binary
+        sudo mv ./binary/packer /usr/local/bin
     - name: Terraform create credential
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
