@@ -19,8 +19,13 @@
       "disk_type": "pd-ssd",
       "ssh_username": "jenkins",
       "account_file": "credential/gcp_credentials.json"
-    }], 
+    }],
     "provisioners": [{
+      "type": "file",
+      "source": "packer/jenkins-setup",
+      "destination": "/tmp/jenkins-setup"
+    },
+    {
       "type": "shell",
       "script": "packer/jenkins-setup/install.sh",
       "pause_before": "10s"
