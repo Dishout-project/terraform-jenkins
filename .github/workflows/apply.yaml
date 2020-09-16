@@ -36,15 +36,16 @@ jobs:
       run: |
         mkdir credential
         echo $GOOGLE_APPLICATION_CREDENTIALS > credential/gcp_credentials.json
-    - name: Packer Build Image
-      run: |
-        pwd
-        ./packer/build.sh
-        cat ../terraform/jenkins_imagevar.tf
+    # - name: Packer Build Image
+    #   run: |
+    #     pwd
+    #     ./packer/build.sh
+    #     cat ../terraform/jenkins_imagevar.tf
     - name: Terraform init
       run: |
-        pwd
+        cd terraform
         terraform init
-#    - name: Terraform apply
-#      run: |
-#        terraform apply --auto-approve
+    - name: Terraform apply
+      run: |
+        cd terraform
+        terraform apply --auto-approve

@@ -15,7 +15,7 @@ variable "machine_type" {
 
 variable "image" {
     type    = string
-    default = "ubuntu-1804-bionic-v20200807"
+    default = "jenkins-pack-1600287623"
 }
 
 variable "script" {
