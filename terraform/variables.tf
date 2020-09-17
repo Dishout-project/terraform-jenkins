@@ -18,11 +18,6 @@ variable "image" {
     default = "jenkins-pack-1600287623"
 }
 
-variable "script" {
-    type    = string
-    default = "../packer/jenkins-setup/install.sh"
-}
-
 variable "tag" {
     type    = string
     default = "jenkins"

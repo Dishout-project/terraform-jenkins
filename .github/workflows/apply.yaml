@@ -12,10 +12,10 @@ jobs:
       run: |
         terraform version
         which terraform
-    - name: Pre-existing Terraform Clean
+    - name: Pre-existing Binaries Clean
       run: |
         sudo rm /usr/local/bin/terraform
-        ls /usr/local/bin
+        sudo rm /usr/local/bin/packer
     - name: Install Terraform
       env:
         TERRAFORM_VERSION: "0.13.2"
@@ -23,24 +23,22 @@ jobs:
         tf_version=$TERRAFORM_VERSION
         wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
         sudo unzip terraform_"$tf_version"_linux_amd64.zip -d /usr/local/bin
-    # - name: Install Packer
-    #   env:
-    #     PACKER_VERSION: "1.5.6"
-    #   run: |
-    #     VER=$PACKER_VERSION
-    #     wget https://releases.hashicorp.com/packer/${VER}/packer_${VER}_linux_amd64.zip
-    #     sudo unzip packer_${VER}_linux_amd64.zip -d /usr/local/bin
-    - name: Terraform create credential
+    - name: Install Packer
+      env:
+        PACKER_VERSION: "1.5.6"
+      run: |
+        VER=$PACKER_VERSION
+        wget https://releases.hashicorp.com/packer/${VER}/packer_${VER}_linux_amd64.zip
+        sudo unzip packer_${VER}_linux_amd64.zip -d /usr/local/bin
+    - name: Create GCP credentials
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
       run: |
         mkdir credential
         echo $GOOGLE_APPLICATION_CREDENTIALS > credential/gcp_credentials.json
-    # - name: Packer Build Image
-    #   run: |
-    #     pwd
-    #     ./packer/build.sh
-    #     cat ../terraform/jenkins_imagevar.tf
+    - name: Packer Build Image
+      run: |
+        packer build packer/jenkins-packer.json
     - name: Terraform init
       run: |
         cd terraform
