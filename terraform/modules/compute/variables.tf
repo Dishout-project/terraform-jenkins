@@ -10,9 +10,9 @@ variable "tag" {
     description = "name of tag"
 }
 
-variable "image" {
-    description = "type of OS Image"
-}
+# variable "image" {
+#     description = "type of OS Image"
+# }
 
 variable "image_family" {
     description = "family of gcp image"

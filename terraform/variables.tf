@@ -13,10 +13,10 @@ variable "machine_type" {
     default = "n1-standard-1"
 }
 
-variable "image" {
-    type    = string
-    default = "jenkins-pack-1600287623"
-}
+# variable "image" {
+#     type    = string
+#     default = "jenkins-pack-1600287623"
+# }
 
 variable "image_family" {
     type    = string
