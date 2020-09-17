@@ -14,6 +14,10 @@ variable "image" {
     description = "type of OS Image"
 }
 
+variable "image_family" {
+    description = "family of gcp image"
+}
+
 variable "vpc_name" {
     description = "name of VPC"
 }
@@ -21,4 +25,3 @@ variable "vpc_name" {
 variable "static_ip_name" {
     description = "name of static ip"
 }
-

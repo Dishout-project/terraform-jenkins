@@ -18,6 +18,11 @@ variable "image" {
     default = "jenkins-pack-1600287623"
 }
 
+variable "image_family" {
+    type    = string
+    default = "jenkins"
+}
+
 variable "tag" {
     type    = string
     default = "jenkins"
