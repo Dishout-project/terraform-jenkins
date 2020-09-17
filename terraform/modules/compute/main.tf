@@ -1,8 +1,8 @@
 data "google_compute_image" "jenkins_image" {
   family  = var.image_family
-  labels = {
-    image-type = "release"
-    }
+#   labels = {
+#     image-type = "release"
+#     }
 }
 
 resource "google_compute_instance" "instance" {
