@@ -24,8 +24,9 @@ jobs:
         echo $GOOGLE_APPLICATION_CREDENTIALS > credential/gcp_credentials.json
     - name: Terraform init
       run: |
-        pwd
+        cd terraform
         terraform init
     - name: Terraform destroy
       run: |
+        cd terraform
         terraform destroy --auto-approve
