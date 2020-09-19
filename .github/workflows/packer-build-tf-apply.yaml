@@ -31,7 +31,7 @@ jobs:
       run: |
         VERSION=$PACKER_VERSION
         wget https://releases.hashicorp.com/packer/${VERSION}/packer_${VERSION}_linux_amd64.zip
-        sudo unzip packer_${VER}_linux_amd64.zip -d /usr/local/bin
+        sudo unzip packer_${VERSION}_linux_amd64.zip -d /usr/local/bin
     - name: Create GCP credentials
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
