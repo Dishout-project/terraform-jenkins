@@ -4,14 +4,14 @@ terraform {
   backend "gcs" {
         bucket      = "dishout-terraform-state"
         prefix      = "dishout/jenkins-state"
-        credentials = "credential/gcp_credentials.json"
+        credentials = "../credential/gcp_credentials.json"
     }
 }
 
 provider "google" {
   version = "3.5.0"
 
-  credentials = file("credential/gcp_credentials.json")
+  credentials = file("../credential/gcp_credentials.json")
 
   project = "dishout-285810" 
   region  = "us-central1"

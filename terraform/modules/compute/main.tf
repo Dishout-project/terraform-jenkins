@@ -1,13 +1,19 @@
+data "google_compute_image" "jenkins_image" {
+  family  = var.image_family
+#   labels = {
+#     image-type = "release"
+#     }
+}
+
 resource "google_compute_instance" "instance" {
     name = var.instance_name
     machine_type = var.machine_type
-    metadata_startup_script = file(var.script)
 
     tags = [var.tag]
 
     boot_disk {
         initialize_params {
-            image = var.image
+            image = data.google_compute_image.jenkins_image.self_link
         }
     }
 

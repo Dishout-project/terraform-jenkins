@@ -13,14 +13,14 @@ variable "machine_type" {
     default = "n1-standard-1"
 }
 
-variable "image" {
-    type    = string
-    default = "ubuntu-1804-bionic-v20200807"
-}
+# variable "image" {
+#     type    = string
+#     default = "jenkins-pack-1600287623"
+# }
 
-variable "script" {
+variable "image_family" {
     type    = string
-    default = "./scripts/install.sh"
+    default = "jenkins"
 }
 
 variable "tag" {

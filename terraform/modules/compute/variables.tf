@@ -10,12 +10,12 @@ variable "tag" {
     description = "name of tag"
 }
 
-variable "script" {
-    description = "metadata startup script"
-}
+# variable "image" {
+#     description = "type of OS Image"
+# }
 
-variable "image" {
-    description = "type of OS Image"
+variable "image_family" {
+    description = "family of gcp image"
 }
 
 variable "vpc_name" {
@@ -25,4 +25,3 @@ variable "vpc_name" {
 variable "static_ip_name" {
     description = "name of static ip"
 }
-
