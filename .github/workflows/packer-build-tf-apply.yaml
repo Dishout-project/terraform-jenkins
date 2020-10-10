@@ -38,9 +38,13 @@ jobs:
       run: |
         mkdir credential
         echo $GOOGLE_APPLICATION_CREDENTIALS > credential/gcp_credentials.json
+    - name: Create SSH key
+      run: |
+        mkdir credential
+        echo ${{ secrets.JENKINS_SSH_PRIVATE_KEY }} > packer/files/id_rsa
     - name: Packer Build Image
       run: |
-        packer build packer/jenkins-packer.json
+        packer build packer/Packerfile.json
     - name: Terraform init
       run: |
         cd terraform
