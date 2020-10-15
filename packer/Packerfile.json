@@ -38,7 +38,7 @@
     {
       "type": "file",
       "source": "packer/jenkins-setup/files/github-key",
-      "destination": "/"
+      "destination": "/tmp"
     },
     {
       "type": "shell",

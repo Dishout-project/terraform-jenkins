@@ -44,6 +44,7 @@ jobs:
       run: |
         echo $JENKINS_SSH_PRIVATE_KEY > packer/jenkins-setup/files/github-key
         ls -lh packer/jenkins-setup/files/github-key
+        ls -lh packer
     - name: Packer Build Image
       run: |
         packer build packer/Packerfile.json
