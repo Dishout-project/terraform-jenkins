@@ -36,11 +36,6 @@
       "inline": "ls /home"
     },
     {
-      "type": "file",
-      "source": "packer/jenkins-setup/files/github-key",
-      "destination": "/tmp"
-    },
-    {
       "type": "shell",
       "script": "packer/jenkins-setup/install.sh",
       "pause_before": "10s"
