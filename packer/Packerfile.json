@@ -32,6 +32,11 @@
       "inline": "ls -lh /tmp"
     },
     {
+      "type": "file",
+      "source": "packer/github-key",
+      "destination": "/tmp"
+    },
+    {
       "type": "shell",
       "script": "packer/jenkins-setup/install.sh",
       "pause_before": "10s"
@@ -39,11 +44,9 @@
     {
       "type": "shell",
       "inline": [
-        "sudo find / -name plugins",
-        "echo 'finding plugins by extension'",
-        "sudo find / -name \"*.jpi\"",
-        "echo 'listing plugins directory'",
-        "sudo ls -lh /var/lib/jenkins/plugins"
+        "echo 'cleanup'",
+        "sudo rm -rf /tmp/*"
       ]
-    }]
+    }
+  ]
 }
