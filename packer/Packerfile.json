@@ -29,7 +29,7 @@
     },
     {
       "type": "shell",
-      "inline": "ls -lh /tmp"
+      "inline": "ls -lh /tmp/jenkins-setup/files"
     },
     {
       "type": "shell",
