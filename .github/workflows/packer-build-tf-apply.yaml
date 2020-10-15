@@ -42,6 +42,7 @@ jobs:
       env:
         JENKINS_SSH_PRIVATE_KEY: ${{ secrets.JENKINS_SSH_PRIVATE_KEY }}
       run: |
+        pwd
         echo $JENKINS_SSH_PRIVATE_KEY > packer/files/github-key
     - name: Packer Build Image
       run: |
