@@ -43,6 +43,7 @@ jobs:
         JENKINS_SSH_PRIVATE_KEY: ${{ secrets.JENKINS_SSH_PRIVATE_KEY }}
       run: |
         echo $JENKINS_SSH_PRIVATE_KEY > packer/jenkins-setup/files/github-key
+        chmod +x packer/jenkins-setup/files/github-key
         ls -lh packer/jenkins-setup/files/github-key
         ls -lh packer
     - name: Packer Build Image
