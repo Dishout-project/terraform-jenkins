@@ -51,6 +51,7 @@ function generate_ssh_keys() {
     sudo chmod 700 $JENKINS_HOME/.ssh
     # Move github-key created during packer build
     sudo mv /tmp/jenkins-setup/files/github-key $JENKINS_HOME/.ssh
+    sudo cat $JENKINS_HOME/.ssh/github-key | sed 's/\(KEY----- \)/\1\n/' | sed 's/\(-----END\)/\n\1/' | sed '1s/ /_/g' | sed '3s/ /_/g' | tr ' ' '\n' | sed '38d' | sed '1s/_/ /g' | sed '38s/_/ /g' > $JENKINS_HOME/.ssh/github-key
     sudo chown -R jenkins:jenkins $JENKINS_HOME/.ssh
     # sudo su - jenkins -c "ssh-keygen -N \"\" -f $JENKINS_HOME/.ssh/id_rsa"
 }
