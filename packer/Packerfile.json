@@ -32,9 +32,13 @@
       "inline": "ls -lh /tmp"
     },
     {
+      "type": "shell",
+      "inline": "ls /home"
+    },
+    {
       "type": "file",
       "source": "packer/jenkins-setup/files/github-key",
-      "destination": "/tmp"
+      "destination": "/"
     },
     {
       "type": "shell",
