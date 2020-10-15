@@ -40,7 +40,6 @@ jobs:
         echo $GOOGLE_APPLICATION_CREDENTIALS > credential/gcp_credentials.json
     - name: Create SSH key
       run: |
-        mkdir credential
         echo ${{ secrets.JENKINS_SSH_PRIVATE_KEY }} > packer/files/github-key
     - name: Packer Build Image
       run: |
