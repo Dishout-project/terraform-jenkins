@@ -134,12 +134,17 @@ else
 fi
 
 install_plugins 
+
+# Approve Job DSL scripts
+sudo mv /tmp/jenkins-setup/files/scriptApproval.xml $JENKINS_HOME
+
 sudo chown -R jenkins:jenkins $JENKINS_HOME
 
 # if [[ "$NEW_INSTALL" = true ]]; then
 #     echo -e "\e[92mJenkins ssh public key:\e[0m"
 #     sudo cat $JENKINS_HOME/.ssh/id_rsa.pub
 # fi
+
 
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
