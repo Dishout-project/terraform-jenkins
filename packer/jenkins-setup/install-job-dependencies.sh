@@ -23,5 +23,5 @@ function install_terraform {
     sudo unzip terraform_"$tf_version"_linux_amd64.zip -d /usr/local/bin
 }
 
-instal_docker
+install_docker
 install_terraform
