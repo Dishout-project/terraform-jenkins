@@ -48,7 +48,7 @@
     {
       "type": "file",
       "source": "credential/gcp_credentials.json",
-      "destination": "/var/lib/jenkins"
+      "destination": "/var/lib/jenkins/gcp_credentials.json"
     },
     {
       "type": "shell",
