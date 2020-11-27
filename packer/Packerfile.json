@@ -44,13 +44,6 @@
       "type": "shell",
       "script": "packer/jenkins-setup/install-job-dependencies.sh",
       "pause_before": "10s"
-    },
-    {
-      "type": "shell",
-      "inline": [
-        "echo 'cleanup'",
-        "sudo rm -rf /tmp/*"
-      ]
     }
   ]
 }
