@@ -11,7 +11,7 @@ function install_docker {
     stable"
 
     sudo apt update
-    sudo apt install docker-ce docker-ce-cli containerd.io
+    sudo apt install -y docker-ce docker-ce-cli containerd.io
 
     sudo groupadd docker
     sudo usermod -aG docker jenkins

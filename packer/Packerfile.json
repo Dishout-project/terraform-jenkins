@@ -44,6 +44,22 @@
       "type": "shell",
       "script": "packer/jenkins-setup/install-job-dependencies.sh",
       "pause_before": "10s"
+    },
+    {
+      "type": "file",
+      "source": "credential/gcp_credentials.json",
+      "destination": "/var/lib/jenkins"
+    },
+    {
+      "type": "shell",
+      "inline": "sudo chown -R jenkins:jenkins /var/lib/jenkins"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "echo 'cleanup'",
+        "sudo rm -rf /tmp/*"
+      ]
     }
   ]
 }
