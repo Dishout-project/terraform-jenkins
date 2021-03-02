@@ -18,29 +18,33 @@ jobs:
       run: |
         sudo rm /usr/local/bin/terraform
         sudo rm /usr/local/bin/packer
-    - name: Install Terraform
+    - name: Install dependencies
       env:
         TERRAFORM_VERSION: "0.13.2"
+        PACKER_VERSION: "1.5.6"
       run: |
         tf_version=$TERRAFORM_VERSION
         wget https://releases.hashicorp.com/terraform/"$tf_version"/terraform_"$tf_version"_linux_amd64.zip
         sudo unzip terraform_"$tf_version"_linux_amd64.zip -d /usr/local/bin
-    - name: Install Packer
-      env:
-        PACKER_VERSION: "1.5.6"
-      run: |
-        VERSION=$PACKER_VERSION
-        wget https://releases.hashicorp.com/packer/${VERSION}/packer_${VERSION}_linux_amd64.zip
-        sudo unzip packer_${VERSION}_linux_amd64.zip -d /usr/local/bin
+        packer_version=$PACKER_VERSION
+        wget https://releases.hashicorp.com/packer/${packer_version}/packer_${packer_version}_linux_amd64.zip
+        sudo unzip packer_${packer_version}_linux_amd64.zip -d /usr/local/bin
+        sudo apt install -y moreutils
     - name: Create GCP credentials
       env:
         GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_TERRAFORM }}
       run: |
         mkdir credential
         echo $GOOGLE_APPLICATION_CREDENTIALS > credential/gcp_credentials.json
+    - name: Create SSH key
+      env:
+        JENKINS_SSH_PRIVATE_KEY: ${{ secrets.JENKINS_SSH_PRIVATE_KEY }}
+      run: |
+        echo $JENKINS_SSH_PRIVATE_KEY > packer/jenkins-setup/files/github-key
+        cat packer/jenkins-setup/files/github-key | sed 's/\(KEY----- \)/\1\n/' | sed 's/\(-----END\)/\n\1/' | sed '1s/ /_/g' | sed '3s/ /_/g' | tr ' ' '\n' | sed '38d' | sed '1s/_/ /g' | sed '38s/_/ /g' | sed '1s/.$//' | sponge packer/jenkins-setup/files/github-key
     - name: Packer Build Image
       run: |
-        packer build packer/jenkins-packer.json
+        packer build packer/Packerfile.json
     - name: Terraform init
       run: |
         cd terraform

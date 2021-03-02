@@ -1,3 +1,0 @@
-[submodule "packer/jenkins-setup"]
-	path = packer/jenkins-setup
-	url = https://github.com/Dishout-project/jenkins-setup.git

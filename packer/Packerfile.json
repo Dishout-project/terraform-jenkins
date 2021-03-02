@@ -29,7 +29,11 @@
     },
     {
       "type": "shell",
-      "inline": "ls -lh /tmp"
+      "inline": "ls -lh /tmp/jenkins-setup/files"
+    },
+    {
+      "type": "shell",
+      "inline": "ls /home"
     },
     {
       "type": "shell",
@@ -39,11 +43,9 @@
     {
       "type": "shell",
       "inline": [
-        "sudo find / -name plugins",
-        "echo 'finding plugins by extension'",
-        "sudo find / -name \"*.jpi\"",
-        "echo 'listing plugins directory'",
-        "sudo ls -lh /var/lib/jenkins/plugins"
+        "echo 'cleanup'",
+        "sudo rm -rf /tmp/*"
       ]
-    }]
+    }
+  ]
 }
